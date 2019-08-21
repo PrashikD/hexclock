@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title> Hex Clock</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="p.jpg" type="image/icon">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    
+<style>
+    .{overflow: hidden;}
+    p#hex{
+        color: white;
+        font-size: 22vw;
+    }
+    div.container{
+        display: block;
+        padding: 0;
+        margin: auto;
+        text-align: center; 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    div.info{
+        color: red;
+    }
+    div#des{
+        visibility: hidden;
+        font-size: 1.1vh;
+        color: lightslategrey;
+        font-family: cursive;
+        width: 30%;
+        text-align: justify;
+    }
+    @media only screen and (max-width: 450px){
+        
+    }
+</style>  
+    
+    
+<body onload = "setInterval('setTime()', 100)">
+    
+    <div onMouseOver= 'show_info()' onMouseOut='hide_info()' class="info"><i class="material-icons">&#xe88e;</i></div>
+    <div id='des'><p>HexClock is not an unusual clock as such. It just shows the time in 24-hour format with a six digit number, representing hours, minutes and seconds. The cool thing is it changes the background color accordingly given by the same hexadecimal number. It is noteworthy that this clock does not show all the colors possible, but still it is an art of its own kind. </p></div>
+    
+    <div class="container">
+        <p id="hex"></p>
+        
+    </div>   
+    
+    
+<script type='text/javascript'>
+     function addZero(i) {
+        if (i < 10) {
+        i = '0' + i;
+        }
+        return i;
+    }
+    
+        function setTime() {
+            var d = new Date();
+            var h = addZero(d.getHours());
+            var m = addZero(d.getMinutes());
+            var s = addZero(d.getSeconds());
+
+            var timet =  '#' + h + m + s;
+
+            document.getElementById("hex").innerHTML = timet; 
+
+            document.body.style.background = timet;        
+        }
+        function show_info(){
+            document.getElementById('des').style.visibility="visible";
+        }
+
+        function hide_info(){
+            document.getElementById('des').style.visibility="hidden";
+        }
+</script>
+    
+</body>
+  
